@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Events - LinkedIn Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer type="module" src="calendar.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="https://static.licdn.com/aero-v1/collections/images/logos/linkedin-logo.svg" alt="LinkedIn Logo" class="linkedin-logo">
+        </div>
+        <nav class="navbar-right">
+            <a href="#" class="nav-item">
+                <span class="material-icons">home</span>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <span class="material-icons">calendar_today</span>
+                <span>Calendar</span>
+            </a>
+            <a href="#" class="nav-item">
+                <span class="material-icons">search</span>
+                <span>Discover</span>
+            </a>
+            <div class="user-profile">
+                <span>JD</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="events-header">
+            <h1>Your Events</h1>
+            <p>View upcoming events from your groups</p>
+        </section>
+
+        <section class="calendar-section">
+            <div class="calendar-nav">
+                <h2 id="currentMonthYear">November 2025</h2>
+                <div class="nav-buttons">
+                    <button id="prevMonth" class="nav-button">&lt;</button>
+                    <button id="nextMonth" class="nav-button">&gt;</button>
+                </div>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="day-label">Sun</div>
+                <div class="day-label">Mon</div>
+                <div class="day-label">Tue</div>
+                <div class="day-label">Wed</div>
+                <div class="day-label">Thu</div>
+                <div class="day-label">Fri</div>
+                <div class="day-label">Sat</div>
+                </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
