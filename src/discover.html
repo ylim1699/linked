@@ -1,22 +1,17 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linked Home Page</title>
-
+    <title>Discover Groups - Linked Clone</title>
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- External CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Tailwind Config -->
-    <script src="script.js" defer></script>
+    
+    <link rel="stylesheet" href="css/discover.css">
+    <script src="discover.js" defer></script>
 </head>
 
 <body class="bg-white font-sans text-text-dark">
-
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
         <nav class="flex items-center justify-between main-content py-2">
@@ -54,3 +49,154 @@
             </div>
         </nav>
     </header>
+    <!-- 2. Main Content Area -->
+    <main class="main-container">
+        <div class="content-card">
+
+            <!-- Title Section -->
+            <h1 class="title">
+                Discover Groups
+            </h1>
+            <p class="subtitle">
+                Find and join campus clubs and organizations
+            </p>
+
+            <!-- Search and Sort Controls -->
+            <div class="controls-wrapper">
+                
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search groups..." 
+                           class="search-input"
+                           aria-label="Search groups">
+                    <!-- Search Icon -->
+                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="sort-control">
+                    <label for="sort-select" class="sort-label">Sort by:</label>
+                    <div class="sort-select-wrapper">
+                        <select id="sort-select" 
+                                class="sort-select">
+                            <option>A-Z</option>
+                            <option>Most Members</option>
+                            <option>Newest</option>
+                        </select>
+                        <!-- Custom Dropdown Arrow -->
+                        <div class="dropdown-arrow">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 6.757 7.586 5.343 9z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Divider -->
+            <h2 class="category-heading">
+                B
+            </h2>
+
+            <!-- Groups Grid -->
+            <div class="groups-grid">
+                
+                <!-- Group Card Example (Business Leadership Society) -->
+                <div class="group-card">
+                    
+                    <!-- Placeholder Image -->
+                    <div class="card-image-wrapper">
+                        <img src="https://placehold.co/400x150/0a66c2/ffffff?text=Professional+Group" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
+                             alt="Business meeting in progress" class="card-image">
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Business Leadership Society
+                        </h3>
+                        <p class="card-description">
+                            Network with business professionals and develop leadership skills for your career.
+                        </p>
+
+                        <!-- Footer Info and Button -->
+                        <div class="card-footer">
+                            <div class="member-info">
+                                <!-- Member Icon -->
+                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <span>178 members</span>
+                            </div>
+                            
+                            <!-- Join Button -->
+                            <a href="#" class="join-button">
+                                Join
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Placeholder Card 2 -->
+                 <div class="group-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://placehold.co/400x150/34d399/ffffff?text=Coding+Club" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
+                             alt="Students collaborating on code" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Biotechnology Innovators
+                        </h3>
+                        <p class="card-description">
+                            Exploring cutting-edge research in biotech and healthcare technologies.
+                        </p>
+                        <div class="card-footer">
+                            <div class="member-info">
+                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <span>520 members</span>
+                            </div>
+                            <a href="#" class="join-button">
+                                Join
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- End of Groups Grid -->
+            
+            <!-- Category Divider -->
+            <h2 class="category-heading mt-10">
+                C
+            </h2>
+             <div class="groups-grid">
+                <!-- Placeholder Card 3 -->
+                 <div class="group-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://placehold.co/400x150/ff4500/ffffff?text=Creative+Arts" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
+                             alt="Art supplies and canvas" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">
+                            Creative Arts Collective
+                        </h3>
+                        <p class="card-description">
+                            A community for students interested in digital art, painting, and design.
+                        </p>
+                        <div class="card-footer">
+                            <div class="member-info">
+                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <span>85 members</span>
+                            </div>
+                            <a href="#" class="join-button">
+                                Join
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
