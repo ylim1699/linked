@@ -5,13 +5,16 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  base: "/linked/", 
   root: "src/",
 
   build: {
     outDir: "../dist",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "src/index.html"),
+        index: resolve(__dirname, "src/index.html"),
+        discover: resolve(__dirname, "src/discover.html"),
+        calendar: resolve(__dirname, "src/calendar.html"),
       }
     }
   }
