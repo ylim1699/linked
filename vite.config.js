@@ -12,9 +12,9 @@ export default defineConfig({
     outDir: "../dist",
     rollupOptions: {
       input: {
-        index: resolve(__dirname, "src/index.html"),
-        discover: resolve(__dirname, "src/discover.html"),
-        calendar: resolve(__dirname, "src/calendar.html"),
+        index: "src/index.html",
+        discover: "src/discover.html",
+        calendar: "src/calendar.html",
       }
     }
   }
