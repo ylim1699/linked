@@ -9,7 +9,7 @@ export default defineConfig({
   root: "src/",
 
   build: {
-    outDir: "../dist",
+    outDir: "../docs",
     rollupOptions: {
       input: {
         index: "src/index.html",
