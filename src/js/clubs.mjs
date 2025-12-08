@@ -38,9 +38,9 @@ export const clubsData = [
         link: "https://cooking.nytimes.com/",
         new: true,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Cooking up at the STC building', date:'12-12-2025',link:'https://cooking.nytimes.com/'},
+            {name:'Cooking up at the STC building', date:'12-19-2025',link:'https://cooking.nytimes.com/'},
+            {name:'Cooking up at the STC building', date:'12-26-2025',link:'https://cooking.nytimes.com/'}
         ]
     },
     {
