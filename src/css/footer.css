@@ -1,0 +1,80 @@
+.contact-button {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--primary-blue);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-blue);
+    border-radius: 9999px;
+    /* rounded-full */
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.contact-button:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Footer Custom Styles (NEW/MODIFIED) --- */
+
+.footer-custom {
+    /* Background: Lightest gray (Lighter than white border) */
+    background-color: #f9fafb;
+
+    /* Position the footer at the bottom of the viewport content */
+    /* This is often necessary when content is short on a tall screen */
+    margin-top: auto;
+
+    /* Ensure the footer content itself is slightly smaller */
+    font-size: 0.875rem;
+    /* text-sm, slightly smaller than base body text */
+}
+
+/* Ensure the main navigation links in the footer are slightly smaller */
+.footer-custom .text-sm {
+    font-size: 0.8125rem;
+    /* ~13px for a smaller look */
+}
+
+.footer-link {
+    color: var(--light-text);
+    /* #6b7280 */
+    transition: color 0.15s ease-in-out;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--primary-blue);
+    /* #0a66c2 */
+    text-decoration: underline;
+}
+
+/* --- Global Body/Layout for Sticky Footer --- */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Stacks header, main, and footer vertically */
+    /* ... other existing body styles ... */
+}
+
+/* --- Main Content Push --- */
+
+main {
+    flex-grow: 1; /* Allows the main content to take up all available vertical space */
+}
+
+/* --- Footer Positioning --- */
+
+.footer-custom {
+    /* If needed, you could use margin-top: auto; here, but flex-direction: column on body
+       and flex-grow: 1 on main usually handles the push effectively. */
+    width: 100%; /* Ensure footer spans full width */
+    /* ... other existing footer styles ... */
+}

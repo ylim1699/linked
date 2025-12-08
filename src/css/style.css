@@ -1,7 +1,28 @@
+@import './footer.css';
+
+/* --- Global Layout --- */
 .main-content {
     padding: 2rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 7%;
+}
+
+/* --- Card Styles --- */
+.group-card {
+    background: white;
+    border: 1px solid #e5e7eb; /* Lighter border */
+    border-radius: 0.75rem; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Enable transitions for hover */
+}
+
+/* Added: Hover effect for the entire card */
+.group-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -4px rgba(0, 0, 0, 0.1); 
+    transform: translateY(-2px); /* Lift the card slightly */
 }
 
 .card-image {
@@ -17,44 +38,67 @@
     overflow: hidden;
 }
 
-/* Optional shortcuts for readability */
-.group-card {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
 .card-title {
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 700; /* Bold */
     margin-bottom: .5rem;
+    color: #1f2937; /* Darker text */
 }
 
 .card-desc {
     font-size: .9rem;
-    color: #666;
+    color: #6b7280; /* Gray text */
     margin-bottom: 1rem;
 }
 
 .card-footer {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #eee;
+    align-items: center; /* Vertically center items */
+    border-top: 1px solid #f3f4f6; /* Lighter divider */
     padding-top: .75rem;
     font-size: .85rem;
-    color: #666;
+    color: #6b7280;
 }
 
+/* --- Join/Unjoin Button Styles --- */
+
+/* Base style (Unjoin Button uses this for visual base) */
 .join-btn {
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    /* Base color is a light gray to indicate 'Joined' status */
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+    color: #4b5563; /* Tailwind gray-600 */
+    border: 1px solid #d1d5db; /* Tailwind gray-300 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* Enable transitions for hover effects */
+}
+
+/* Specific Unjoin Button Hover Effect */
+.unjoin-button:hover {
+    /* Hover state: change color to red/danger for confirming the "Unjoin" action */
+    background-color: #fee2e2; /* Tailwind red-100 */
+    color: #b91c1c; /* Tailwind red-700 */
+    border-color: #f87171; /* Tailwind red-400 */
+    
+    /* Transformation: scale the button slightly */
+    transform: scale(1.05); 
+}
+
+/* Base Join button (Blue) - used in discover page for comparison */
+.join-button {
+    background-color: #0a66c2; 
+    color: white;
+    border-color: #0a66c2;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-weight: 600;
 }
 
+
+/* --- Logo Styles --- */
 .logo {
     display: flex;
     align-items: center;
@@ -66,7 +110,98 @@
     border-radius: 5px;
 }
 
-@media screen and (max-width: 768px) {
+.empty-state-card {
+    /* ... (Existing styling for centering and container appearance) ... */
+    grid-column: 1 / -1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 3rem 2rem;
+    border: 2px dashed #e5e7eb;
+    border-radius: 0.75rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+/* Base (Non-Hovered) State for the Button */
+.empty-state-button {
+    /* Lighter Blue Background (Tailwind blue-100 equivalent) */
+    background-color: #dbeafe; 
+    color: var(--primary-blue, #0a66c2);
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
     
+    /* Box Shadow added for the non-hovered state */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+}
+
+/* Hovered State for the Button */
+.empty-state-button:hover {
+    /* Solid Primary Blue Background */
+    background-color: var(--primary-blue, #0a66c2);
     
+    /* Text Color changes to White */
+    color: var(--white, #ffffff);
+    
+    /* Box shadow removed or adjusted slightly */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Profile Menu / Log Out Dropdown Styling --- */
+
+/* 1. Ensure the parent trigger has minimum height for reliable hovering */
+.profile-menu {
+    /* Height matches the w-8 h-8 button (32px) to ensure the hover area is predictable */
+    height: 32px; 
+    /* Set minimum width for positioning */
+    min-width: 32px;
+}
+
+/* 2. Fix the "Hover Gap" Issue and Style the Dropdown Container */
+.profile-dropdown-fixed {
+    /* Critical Fix: Position the dropdown flush against the button's bottom edge */
+    top: 100%; 
+    /* Critical Fix: Slightly overlap the button's bottom border to eliminate the gap */
+    margin-top: -1px; 
+    
+    /* Ensure styles applied via JavaScript are enforced */
+    background-color: var(--white, white); 
+    border: 1px solid #e5e7eb; /* gray-200 */
+    
+    /* Use padding to push content away from the top edge */
+    padding-top: 0.25rem; 
+    padding-bottom: 0.25rem;
+    
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Style the User Info and Log Out Link */
+
+/* Style for the "Hello, [User]" name text */
+.profile-dropdown-fixed span {
+    font-size: 0.875rem; /* text-sm */
+    color: #1f2937; /* dark-text */
+}
+
+/* Base style for all links in the dropdown (including Log Out) */
+#logout-link {
+    /* Ensure it takes full width for easy clicking */
+    display: block; 
+    padding: 0.5rem 1rem; /* px-4 py-2 equivalent */
+    font-size: 0.875rem; /* text-sm */
+    color: #4b5563; /* medium gray text */
+    text-decoration: none;
+    transition: background-color 0.1s ease;
+}
+
+/* Hover effect for Log Out link */
+#logout-link:hover {
+    background-color: #f3f4f6; /* light gray hover background */
+    color: #b91c1c; /* A slight red/danger color to indicate logging out */
 }

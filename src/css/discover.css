@@ -398,6 +398,140 @@ body {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 768px) {
+/*  */
+
+/* --- Modal Styles --- */
+
+/* Full-screen backdrop overlay */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Dark semi-transparent overlay */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Container for the enlarged card */
+.modal-card-wrapper {
+    position: relative;
+    background-color: var(--white);
+    padding: 0; /* Card handles its own padding */
+    border-radius: 0.75rem;
+    max-width: 600px; /* Max size for the enlarged view */
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+    transition: transform 0.3s ease-out;
+}
+
+/* Use the existing .group-card styles within the modal */
+/* We need to ensure the group-card styles apply cleanly inside the wrapper */
+.modal-card-wrapper .group-card {
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    /* Ensure card hovers are disabled when inside the modal */
+    transform: none; 
+}
+.modal-card-wrapper .group-card:hover {
+    box-shadow: none;
+    transform: none;
+}
+/* Adjust image height for the modal view */
+.modal-card-wrapper .card-image-wrapper {
+    height: 15rem; /* Larger image in modal */
+}
+
+
+/* Close button (top right) */
+.close-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: var(--white); /* White on the dark backdrop */
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1001; /* Above everything */
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #cbd5e1; /* light gray hover */
+}
+/* Utility class to hide the modal */
+.hidden {
+    display: none !important;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end; /* Push buttons to the right */
+    align-items: center;
+    padding-top: 1rem;
+    gap: 0.75rem; /* space between buttons */
+    border-top: 1px solid #f3f4f6; /* Keep a separator above buttons */
+}
+
+/* Styling for the external link button (secondary style) */
+.external-link-button {
+    /* Transparent background, blue text, blue border */
+    background-color: transparent;
+    color: var(--primary-blue);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500;
+    padding: 6px 16px; 
+    border-radius: 9999px; 
+    border: 1px solid var(--primary-blue);
+    transition: all 150ms ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.external-link-button:hover {
+    background-color: #e3f2fd; /* Light blue background on hover (similar to Tailwind's blue-50) */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Styling for member info when separated from buttons */
+.modal-member-info {
+    /* Removed the default margin/padding from the generic card-footer */
+    padding-top: 0;
+    margin-bottom: 0; 
     
+    /* Ensure it doesn't try to flex-end content */
+    display: block; 
+}
+
+/* Adjust image size for the modal to be slightly bigger than the card grid */
+.modal-card-wrapper .card-image-wrapper {
+    height: 12rem; /* h-48 */
+}
+
+.profile-menu:hover .group-hover\:block {
+    display: block !important;
+}
+
+/* Ensure the parent trigger is correctly sized to eliminate the gap */
+.profile-menu {
+    height: 32px; /* Matches w-8 h-8 button size */
+    min-width: 32px;
+}
+
+/* Ensure the dropdown position is correct (eliminating the margin that causes the jump) */
+.profile-dropdown-fixed {
+    top: 100%; 
+    margin-top: -1px; /* Overlap slightly to guarantee zero hover gap */
+    z-index: 900;
 }

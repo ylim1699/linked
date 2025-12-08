@@ -1,4 +1,83 @@
+// --- USER AUTHENTICATION STATE MANAGEMENT ---
+const USER_KEY = 'currentUser';
+
+function logInUser(username) {
+    localStorage.setItem(USER_KEY, username);
+    updateHeaderForAuth();
+}
+
+function getCurrentUser() {
+    return localStorage.getItem(USER_KEY);
+}
+
+function logOutUser() {
+    localStorage.removeItem(USER_KEY);
+    window.location.reload();
+}
+
+function updateHeaderForAuth() {
+    const user = getCurrentUser();
+    const signUpButtonPlaceholder = document.getElementById('signup-button-placeholder'); 
+    
+    if (!signUpButtonPlaceholder) return;
+
+    // --- CONSOLIDATED CLEANUP ---
+    // Remove any existing profile menu from the previous page load/state change
+    const profileMenu = document.querySelector('.profile-menu');
+    if (profileMenu) {
+        profileMenu.remove();
+    }
+    // --- END CONSOLIDATED CLEANUP ---
+    
+    if (user) {
+        // --- LOGGED IN: Inject Initials/Menu ---
+        
+        // Hide original placeholder
+        signUpButtonPlaceholder.style.display = 'none'; 
+        
+        const initials = user.slice(0, 1).toUpperCase() + user.slice(1, 2).toUpperCase();
+        
+        const profileHtml = `
+        <div class="profile-menu relative group">
+        <button class="w-8 h-8 bg-blue-700 text-white rounded-full shadow border border-blue-700 font-semibold text-xs transition flex items-center justify-center cursor-pointer">
+        ${initials}
+        </button>
+        <div class="absolute right-0 w-48 bg-white border border-gray-200 rounded-lg shadow-xl hidden group-hover:block z-50 profile-dropdown-fixed">
+        <div class="py-2">
+        <span class="block px-4 py-2 text-sm text-gray-700 font-medium">Hello, ${user}</span>
+        <a href="#" id="logout-link" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+        Log Out
+        </a>
+        </div>
+        </div>
+        </div>
+        `;
+        
+        signUpButtonPlaceholder.insertAdjacentHTML('afterend', profileHtml);
+        
+        // Attach Log Out Listener
+        const logoutLink = document.getElementById('logout-link');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                logOutUser();
+            });
+        }
+    } else {
+        // --- LOGGED OUT: Ensure static Sign Up button is visible ---
+        
+        // Restore display: flex to maintain Tailwind styling/alignment
+        signUpButtonPlaceholder.style.display = 'flex'; 
+    }
+}
+
+// --- CALENDAR LOGIC ---
+
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. RUN AUTH CHECK FIRST
+    updateHeaderForAuth();
+
+    // 2. RUN CALENDAR LOGIC
     const currentMonthYear = document.getElementById('currentMonthYear');
     const prevMonthBtn = document.getElementById('prevMonth');
     const nextMonthBtn = document.getElementById('nextMonth');
@@ -27,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentMonthYear.textContent = `${monthNames[month]} ${year}`;
 
-        // Get the first day of the month (0 = Sunday, 1 = Monday, etc.)
         const firstDayOfMonth = new Date(year, month, 1).getDay();
-        // Get the number of days in the current month
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
         // Fill in empty leading days
@@ -44,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const dayDiv = document.createElement('div');
             dayDiv.classList.add('calendar-day');
             dayDiv.textContent = i;
-            dayDiv.dataset.date = `${year}-${month + 1}-${i}`; // Store full date for potential events
+            dayDiv.dataset.date = `${year}-${month + 1}-${i}`; // Store full date
 
-            // Highlight November 19, 2025 as selected, similar to the image
-            if (year === 2025 && month === 10 && i === 19) { // Month 10 is November (0-indexed)
+            // Highlight November 19, 2025 as selected
+            if (year === 2025 && month === 10 && i === 19) { 
                 dayDiv.classList.add('selected');
             }
 
@@ -76,3 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     renderCalendar();
 });
+
+
+// --- GLOBAL EXPOSURE (FOR TEMP SIGNUP/TESTING) ---
+window.logInUser = logInUser;
+window.getCurrentUser = getCurrentUser;
+window.logOutUser = logOutUser;

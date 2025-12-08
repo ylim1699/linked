@@ -7,6 +7,7 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./js/signup.js" defer></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
 
@@ -49,35 +50,5 @@
             <a href="login.html" class="text-linkedin-blue font-medium hover:underline">Log in</a>
         </p>
     </div>
-
-    <script>
-        const form = document.getElementById("signupForm");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const confirmPassword = document.getElementById("confirmPassword").value;
-
-            // Password match check
-            if (password !== confirmPassword) {
-                alert("Passwords do not match.");
-                return;
-            }
-
-            // Save user to localStorage
-            const user = { name, email, password };
-            localStorage.setItem("user", JSON.stringify(user));
-
-            // Log user in
-            localStorage.setItem("loggedIn", "true");
-
-            // Redirect to main website
-            window.location.href = "index.html"; // change this to your homepage
-        });
-    </script>
-
 </body>
 </html>

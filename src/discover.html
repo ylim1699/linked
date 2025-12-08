@@ -1,12 +1,13 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Groups - Linked Clone</title>
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="stylesheet" href="./css/discover.css">
     <script type="module" src="./js/discover.js" defer></script>
 </head>
@@ -14,15 +15,48 @@
 <body class="bg-white font-sans text-text-dark">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-    <nav class="flex items-center justify-between main-content py-2">
-        <div class="logo flex items-center space-x-2">
-            <img src="./images/Logo_Finished.png" alt="linked logo" class="w-8 h-8">
-            <span class="text-xl font-bold">Linked</span>
-        </div>
+        <nav class="flex items-center justify-between main-content py-2">
+            <div class="logo flex items-center space-x-2">
+                <img src="./images/Logo_Finished.png" alt="linked logo" class="w-8 h-8">
+                <span class="text-xl font-bold">Linked</span>
+            </div>
 
-        <div class="hidden md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
+            <div class="md:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
 
-            <a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-700" href="index.html">
+                <a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-700" href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor">
+                        <path d="M12 2L3 9v11h6v-6h6v6h6V9z" />
+                    </svg>
+                    <span class="text-xs font-semibold">Home</span>
+                </a>
+
+                <a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-700" href="calendar.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    </svg>
+                    <span class="text-xs">Calendar</span>
+                </a>
+
+                <a class="flex flex-col items-center p-2 font-semibold border-b-2" href="discover.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#1e3a8a" stroke="#1e3a8a"
+                        stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                    </svg>
+                    <span class="text-xs">Discover</span>
+                </a>
+            </div>
+
+            <a href="signup.html"
+    id="signup-button-placeholder" 
+    class="px-4 py-2 bg-blue-700 text-white rounded-full shadow border border-blue-700 hover:bg-blue-950 hover:bg-blue-950 transition">
+    Sign Up
+</a>
+        </nav>
+
+        <div class="flex md:hidden justify-around py-2 border-t border-gray-100 main-content">
+            <a class="flex flex-col items-center p-2 text-linkedin-blue border-linkedin-blue">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor">
                     <path d="M12 2L3 9v11h6v-6h6v6h6V9z" />
@@ -46,45 +80,11 @@
                 <span class="text-xs">Discover</span>
             </a>
         </div>
-
-        <a href="signup.html"
-            class="px-4 py-2 bg-blue-700 text-white rounded-full shadow border border-blue-700 hover:bg-blue-950 hover:bg-blue-950 transition">
-            Sign Up
-        </a>
-
-    </nav>
-
-    <div class="flex md:hidden justify-around py-2 border-t border-gray-100 main-content">
-        <a class="flex flex-col items-center p-2 text-linkedin-blue border-linkedin-blue">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor">
-                <path d="M12 2L3 9v11h6v-6h6v6h6V9z" />
-            </svg>
-            <span class="text-xs font-semibold">Home</span>
-        </a>
-
-        <a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-700" href="calendar.html">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-            </svg>
-            <span class="text-xs">Calendar</span>
-        </a>
-
-        <a class="flex flex-col items-center p-2 font-semibold border-b-2" href="discover.html">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="#1e3a8a" stroke="#1e3a8a"
-                stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-            </svg>
-            <span class="text-xs">Discover</span>
-        </a>
-    </div>
-</header>
+    </header>
     <!-- 2. Main Content Area -->
     <main class="main-container">
         <div class="content-card">
 
-            <!-- Title Section -->
             <h1 class="title">
                 Discover Groups
             </h1>
@@ -92,142 +92,44 @@
                 Find and join campus clubs and organizations
             </p>
 
-            <!-- Search and Sort Controls -->
             <div class="controls-wrapper">
-                
-                <!-- Search Bar -->
+
                 <div class="search-bar">
-                    <input type="text" placeholder="Search groups..." 
-                           class="search-input"
-                           aria-label="Search groups">
-                    <!-- Search Icon -->
-                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" placeholder="Search groups..." class="search-input" aria-label="Search groups"
+                        id="search-input">
+                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
                 </div>
 
-                <!-- Sort Dropdown -->
                 <div class="sort-control">
                     <label for="sort-select" class="sort-label">Sort by:</label>
                     <div class="sort-select-wrapper">
-                        <select id="sort-select" 
-                                class="sort-select">
-                            <option>A-Z</option>
-                            <option>Most Members</option>
-                            <option>Newest</option>
+                        <select id="sort-select" class="sort-select">
+                            <option value="az">A-Z</option>
+                            <option value="members">Most Members</option>
+                            <option value="newest">Newest</option>
                         </select>
-                        <!-- Custom Dropdown Arrow -->
                         <div class="dropdown-arrow">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 6.757 7.586 5.343 9z"/></svg>
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 6.757 7.586 5.343 9z" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Category Divider -->
-            <h2 class="category-heading">
-                B
-            </h2>
-
-            <!-- Groups Grid -->
-            <div class="groups-grid">
-                
-                <!-- Group Card Example (Business Leadership Society) -->
-                <div class="group-card">
-                    
-                    <!-- Placeholder Image -->
-                    <div class="card-image-wrapper">
-                        <img src="https://placehold.co/400x150/0a66c2/ffffff?text=Professional+Group" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
-                             alt="Business meeting in progress" class="card-image">
-                    </div>
-
-                    <!-- Card Content -->
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            Business Leadership Society
-                        </h3>
-                        <p class="card-description">
-                            Network with business professionals and develop leadership skills for your career.
-                        </p>
-
-                        <!-- Footer Info and Button -->
-                        <div class="card-footer">
-                            <div class="member-info">
-                                <!-- Member Icon -->
-                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <span>178 members</span>
-                            </div>
-                            
-                            <!-- Join Button -->
-                            <a href="#" class="join-button">
-                                Join
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Placeholder Card 2 -->
-                 <div class="group-card">
-                    <div class="card-image-wrapper">
-                        <img src="https://placehold.co/400x150/34d399/ffffff?text=Coding+Club" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
-                             alt="Students collaborating on code" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            Biotechnology Innovators
-                        </h3>
-                        <p class="card-description">
-                            Exploring cutting-edge research in biotech and healthcare technologies.
-                        </p>
-                        <div class="card-footer">
-                            <div class="member-info">
-                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <span>520 members</span>
-                            </div>
-                            <a href="#" class="join-button">
-                                Join
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- End of Groups Grid -->
-            
-            <!-- Category Divider -->
-            <h2 class="category-heading mt-10">
-                C
-            </h2>
-             <div class="groups-grid">
-                <!-- Placeholder Card 3 -->
-                 <div class="group-card">
-                    <div class="card-image-wrapper">
-                        <img src="https://placehold.co/400x150/ff4500/ffffff?text=Creative+Arts" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x150/2563eb/ffffff?text=Image+Unavailable'"
-                             alt="Art supplies and canvas" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            Creative Arts Collective
-                        </h3>
-                        <p class="card-description">
-                            A community for students interested in digital art, painting, and design.
-                        </p>
-                        <div class="card-footer">
-                            <div class="member-info">
-                                <svg class="member-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2m0 2h-2m-2-3a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                <span>85 members</span>
-                            </div>
-                            <a href="#" class="join-button">
-                                Join
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div id="groups-list-container">
             </div>
 
         </div>
     </main>
-
+    <div id="club-modal" class="modal-backdrop hidden">
+        <div id="modal-content-container" class="modal-card-wrapper">
+        </div>
+    </div>
 </body>
+
 </html>
