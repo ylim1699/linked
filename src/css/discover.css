@@ -16,113 +16,6 @@ body {
   margin: 0;
 }
 
-/* 1. Navigation Bar (Header) */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background-color: var(--white);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.header-content {
-  max-width: 1280px; /* Equivalent to max-w-7xl */
-  margin: 0 auto;
-  padding: 0 1rem; /* Equivalent to px-4 */
-  height: 56px; /* Equivalent to h-14 */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* space-x-2 */
-}
-
-.logo-icon {
-  background-color: var(--primary-blue);
-  color: var(--white);
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 0.875rem; /* text-sm */
-}
-
-.logo-text {
-  font-size: 1.125rem; /* text-lg */
-  font-weight: 600;
-  color: var(--dark-text);
-  display: none; /* hidden sm:block */
-}
-@media (min-width: 640px) {
-  .logo-text {
-    display: block;
-  }
-  .header-content {
-    padding: 0 1.5rem; /* sm:px-6 */
-  }
-}
-@media (min-width: 1024px) {
-  .header-content {
-    padding: 0 2rem; /* lg:px-8 */
-  }
-}
-
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  gap: 32px; /* space-x-8 */
-  height: 100%;
-}
-
-.nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: var(--light-text);
-  text-decoration: none;
-  transition: color 150ms ease-in-out;
-}
-
-.nav-link:hover {
-  color: var(--dark-text);
-}
-
-.nav-link-text {
-  font-size: 0.75rem; /* text-xs */
-  margin-top: 4px;
-  display: none;
-}
-@media (min-width: 640px) {
-  .nav-link-text {
-    display: inline;
-  }
-}
-
-/* Active Discover Link */
-.nav-link.active {
-  color: var(--white);
-  background-color: var(--primary-blue);
-  border-radius: 8px;
-  padding: 0 1rem; /* px-4 */
-  font-weight: 500;
-}
-.nav-link.active svg {
-  stroke: var(--white);
-}
-.nav-link.active:hover {
-  background-color: #004182; /* Slightly darker blue */
-}
-
 /* User Avatar */
 .user-avatar {
   width: 28px;
@@ -470,9 +363,6 @@ body {
     color: #cbd5e1; /* light gray hover */
 }
 /* Utility class to hide the modal */
-.hidden {
-    display: none !important;
-}
 
 .modal-footer {
     display: flex;
