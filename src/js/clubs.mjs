@@ -20,7 +20,12 @@ export const clubsData = [
         fallbackText: "No country dancing this semester",
         joinLink: "#join-country",
         link: "https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-1",
-        new: false
+        new: false,
+        events: [
+            {name:'Dance at the MC', date:'12-10-2025',link:'https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-2'},
+            {name:'Dance at the MC', date:'12-17-2025',link:'https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-2'},
+            {name:'Dance at the MC', date:'12-24-2025',link:'https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-2'}
+        ]
     },
     {
         category: 'C',
@@ -31,7 +36,12 @@ export const clubsData = [
         fallbackText: "No cooking club this semester",
         joinLink: "#join-cooking",
         link: "https://cooking.nytimes.com/",
-        new: true
+        new: true,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'D',
@@ -42,7 +52,12 @@ export const clubsData = [
         fallbackText: "no trump club this semester",
         joinLink: "#join-trump",
         link: "https://www.foxnews.com/",
-        new: true
+        new: true,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'D',
@@ -53,7 +68,12 @@ export const clubsData = [
         fallbackText: "no D&D club this semester",
         joinLink: "#join-d&d",
         link: "https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1",
-        new: false
+        new: false,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'J',
@@ -64,7 +84,12 @@ export const clubsData = [
         fallbackText: "no Joe Biden club this semester",
         joinLink: "#join-biden",
         link: "https://www.cnn.com/",
-        new: false
+        new: false,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
      {
         category: 'K',
@@ -75,7 +100,12 @@ export const clubsData = [
         fallbackText: "no Rocket club this semester",
         joinLink: "#join-rocket",
         link: "https://www.youtube.com/watch?v=Fe4PEnyVr9E",
-        new: false
+        new: false,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'L',
@@ -86,7 +116,12 @@ export const clubsData = [
         fallbackText: "Laser tag not available this semester",
         joinLink: "#join-laser",
         link: "https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1",
-        new: false
+        new: false,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'L',
@@ -97,7 +132,12 @@ export const clubsData = [
         fallbackText: "no latin dancing this semester",
         joinLink: "#join-latin",
         link: "https://www.byui.edu/calendar/weekly-activities/latin-dance-2025-12-09-11520402-1",
-        new: true
+        new: true,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'R',
@@ -108,7 +148,12 @@ export const clubsData = [
         fallbackText: "Roller Skating Club not available for this semester",
         joinLink: "#join-roller",
         link: "https://www.byui.edu/skateway-roller-skating/",
-        new: false
+        new: false,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     },
     {
         category: 'R',
@@ -119,6 +164,11 @@ export const clubsData = [
         fallbackText: "Ropes course Club not available for this semester",
         joinLink: "#join-ropes",
         link: "https://www.byui.edu/ropes-course/",
-        new: true
+        new: true,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
     }
 ];
