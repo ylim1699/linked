@@ -4,7 +4,7 @@ export const clubsData = [
         name: "Country Dancing Club",
         description: "A community for students interested in country dancing",
         members: 2156,
-        imageSrc: "images/countrydance.jpg",
+        imageSrc: "/assets/countrydance.jpg",
         fallbackText: "No country dancing this semester",
         joinLink: "#join-country",
         link: "https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-1",
