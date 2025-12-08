@@ -94,7 +94,7 @@ export const clubsData = [
     },
      {
         category: 'K',
-        name: "The Rocket club",
+        name: "Kim's Rocket Club",
         description: "A community for students interested in building rockets",
         members: 666,
         imageSrc: rocket,
