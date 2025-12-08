@@ -8,6 +8,7 @@ import laser from '../images/lasertag.jpg';
 import latin from '../images/latindancing.jpg';
 import roller from '../images/rollerskate.jpg';
 import ropes from '../images/ropes.jpg';
+import sports from '../images/nfl.webp';
 
 
 export const clubsData = [
@@ -164,6 +165,22 @@ export const clubsData = [
         fallbackText: "Ropes course Club not available for this semester",
         joinLink: "#join-ropes",
         link: "https://www.byui.edu/ropes-course/",
+        new: true,
+        events: [
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''},
+            {name:'', date:'',link:''}
+        ]
+    },
+     {
+        category: 'S',
+        name: "Sports Club",
+        description: "A community for students interested in various sports topics",
+        members: 438,
+        imageSrc: sports,
+        fallbackText: "Club is available for this semester",
+        joinLink: "#join-sports",
+        link: "https://www.foxsports.com/",
         new: true,
         events: [
             {name:'', date:'',link:''},
