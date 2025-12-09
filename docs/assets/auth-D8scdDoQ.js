@@ -1,0 +1,1 @@
+const t="currentUser",o="joinedClubs";function n(){return localStorage.getItem(t)}function r(e){localStorage.setItem(t,e)}function s(){localStorage.removeItem(t),window.location.reload()}function a(){const e=localStorage.getItem(o);return e?JSON.parse(e):[]}export{s as a,a as b,n as g,r as l};

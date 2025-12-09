@@ -1,8 +1,6 @@
-// --- ./js/calendar.js (MODIFIED - FINAL VERSION) ---
-// IMPORT NEW AUTH MODULE
 import { getCurrentUser, logOutUser, logInUser, getJoinedClubs } from "./auth.mjs";
-// IMPORT CLUB DATA to access event details
 import { clubsData } from "./clubs.mjs";
+
 
 
 // --- USER AUTHENTICATION STATE MANAGEMENT ---
