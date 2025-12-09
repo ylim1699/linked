@@ -1,23 +1,10 @@
 import { createGroupCardHTML, getModalContentHTML } from "./templates.mjs";
 import { clubsData } from "./clubs.mjs";
+import { getJoinedClubs, getCurrentUser, logOutUser, logInUser } from "./auth.mjs";
 
 // --- SHARED USER AUTHENTICATION STATE MANAGEMENT ---
 const STORAGE_KEY = 'joinedClubs';
 const USER_KEY = 'currentUser';
-
-function getCurrentUser() {
-    return localStorage.getItem(USER_KEY);
-}
-
-function logInUser(username) {
-    localStorage.setItem(USER_KEY, username);
-    updateHeaderForAuth();
-}
-
-function logOutUser() {
-    localStorage.removeItem(USER_KEY);
-    window.location.reload();
-}
 
 // --- HEADER UI UPDATE FUNCTION (Should be working now) ---
 function updateHeaderForAuth() {
@@ -56,13 +43,6 @@ function updateHeaderForAuth() {
 }
 // --- END OF AUTH BLOCK ---
 
-
-// --- CLUB MANAGEMENT FUNCTIONS ---
-
-function getJoinedClubs() {
-    const clubsJson = localStorage.getItem(STORAGE_KEY);
-    return clubsJson ? JSON.parse(clubsJson) : [];
-}
 
 /**
  * @param {Object} club 

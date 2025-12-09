@@ -6,9 +6,11 @@
     <title>Linked Calendar page</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-  <script type="module" crossorigin src="/linked/assets/calendar-CFLwYAHV.js"></script>
+  <script type="module" crossorigin src="/linked/assets/calendar-j7EFCI5k.js"></script>
   <link rel="modulepreload" crossorigin href="/linked/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/linked/assets/calendar-CRKp8C0Q.css">
+  <link rel="modulepreload" crossorigin href="/linked/assets/auth-D8scdDoQ.js">
+  <link rel="modulepreload" crossorigin href="/linked/assets/clubs-Ej8KYHwv.js">
+  <link rel="stylesheet" crossorigin href="/linked/assets/calendar-BYClrvYZ.css">
 </head>
 <body>
     <header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -103,8 +105,18 @@
                 <div class="day-label">Thu</div>
                 <div class="day-label">Fri</div>
                 <div class="day-label">Sat</div>
-                </div>
+            </div>
         </section>
     </main>
+    <div id="event-modal" class="modal-backdrop hidden">
+        <div id="modal-content-container" class="modal-card-wrapper">
+            <button id="modal-close-button" class="close-button">&times;</button>
+            <div class="modal-content-inner">
+                <h2 id="events-title" class="events-title"></h2>
+                <div id="events-list" class="events-list">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

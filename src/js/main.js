@@ -1,11 +1,8 @@
 import { joinedClubTemplate, createJoinedCardHTML } from "./templates.mjs";
+import { getJoinedClubs, getCurrentUser, logOutUser, logInUser } from "./auth.mjs";
+
 
 const STORAGE_KEY = 'joinedClubs';
-
-function getJoinedClubs() {
-    const clubsJson = localStorage.getItem(STORAGE_KEY);
-    return clubsJson ? JSON.parse(clubsJson) : [];
-}
 
 /**
  * @param {string} clubName - The name of the club to unjoin.
@@ -45,23 +42,6 @@ function setupUnjoinListeners() {
             }
         });
     });
-}
-
-// --- USER AUTHENTICATION STATE MANAGEMENT ---
-const USER_KEY = 'currentUser';
-
-function logInUser(username) {
-    localStorage.setItem(USER_KEY, username);
-    updateHeaderForAuth(); // Update UI immediately
-}
-
-function getCurrentUser() {
-    return localStorage.getItem(USER_KEY);
-}
-
-function logOutUser() {
-    localStorage.removeItem(USER_KEY);
-    window.location.reload(); // Reloads the page, showing the Sign Up button
 }
 
 // --- HEADER UI UPDATE FUNCTION ---

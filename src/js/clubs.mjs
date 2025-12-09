@@ -55,9 +55,9 @@ export const clubsData = [
         link: "https://www.foxnews.com/",
         new: true,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Face to face with Trump', date:'11-28-2025',link:'https://www.foxnews.com/'},
+            {name:'Face to face with Trump', date:'11-21-2025',link:'https://www.foxnews.com/'},
+            {name:'After Meeting', date:'12-05-2025',link:'https://www.foxnews.com/'}
         ]
     },
     {
@@ -71,9 +71,8 @@ export const clubsData = [
         link: "https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1",
         new: false,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Dungeon Quest', date:'12-11-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1'},
+            {name:'Dungeon Quest', date:'12-18-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1'}
         ]
     },
     {
@@ -87,9 +86,8 @@ export const clubsData = [
         link: "https://www.cnn.com/",
         new: false,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Face-to-Face with Biden', date:'12-25-2025',link:'https://www.cnn.com/'},
+            {name:'After Meeting', date:'1-02-2026',link:'https://www.cnn.com/'}
         ]
     },
      {
@@ -103,9 +101,8 @@ export const clubsData = [
         link: "https://www.youtube.com/watch?v=Fe4PEnyVr9E",
         new: false,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Vision Meeting', date:'12-07-2025',link:'https://www.youtube.com/watch?v=Fe4PEnyVr9E'},
+            {name:'Rocket Science', date:'12-014-2025',link:'https://www.youtube.com/watch?v=Fe4PEnyVr9E'}
         ]
     },
     {
@@ -119,9 +116,8 @@ export const clubsData = [
         link: "https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1",
         new: false,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Laser Tag at Taylor Building', date:'12-08-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1'},
+            {name:'Laser Tag at Taylor Building', date:'12-15-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1'}
         ]
     },
     {
@@ -135,9 +131,8 @@ export const clubsData = [
         link: "https://www.byui.edu/calendar/weekly-activities/latin-dance-2025-12-09-11520402-1",
         new: true,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Latin Dance at the MC', date:'12-09-2025',link:'https://www.byui.edu/calendar/weekly-activities/latin-dance-2025-12-09-11520402-1'},
+            {name:'Latin Dance at the MC', date:'12-16-2025',link:'https://www.byui.edu/calendar/weekly-activities/latin-dance-2025-12-09-11520402-1'}
         ]
     },
     {
@@ -151,9 +146,10 @@ export const clubsData = [
         link: "https://www.byui.edu/skateway-roller-skating/",
         new: false,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Roller Skating at the MC', date:'12-08-2025',link:'https://www.byui.edu/skateway-roller-skating/'},
+            {name:'Roller Skating at the MC', date:'12-11-2025',link:'https://www.byui.edu/skateway-roller-skating/'},
+            {name:'Roller Skating at the MC', date:'12-13-2025',link:'https://www.byui.edu/skateway-roller-skating/'}, 
+            {name:'Roller Skating at the MC', date:'12-15-2025',link:'https://www.byui.edu/skateway-roller-skating/'},
         ]
     },
     {
@@ -167,9 +163,8 @@ export const clubsData = [
         link: "https://www.byui.edu/ropes-course/",
         new: true,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Rope Course', date:'12-05-2025',link:'https://www.byui.edu/ropes-course/'},
+            {name:'Rope Course', date:'12-12-2025',link:'https://www.byui.edu/ropes-course/'}
         ]
     },
      {
@@ -183,9 +178,8 @@ export const clubsData = [
         link: "https://www.foxsports.com/",
         new: true,
         events: [
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''},
-            {name:'', date:'',link:''}
+            {name:'Sports intro club meeting', date:'1-09-2025',link:'https://www.foxsports.com/'},
+            {name:'Sports club meeting', date:'1-16-2025',link:'https://www.foxsports.com/'}
         ]
     }
 ];

@@ -1,34 +1,29 @@
+// --- ./js/calendar.js (MODIFIED - FINAL VERSION) ---
+// IMPORT NEW AUTH MODULE
+import { getCurrentUser, logOutUser, logInUser, getJoinedClubs } from "./auth.mjs";
+// IMPORT CLUB DATA to access event details
+import { clubsData } from "./clubs.mjs";
+
+
 // --- USER AUTHENTICATION STATE MANAGEMENT ---
-const USER_KEY = 'currentUser';
-
-function logInUser(username) {
-    localStorage.setItem(USER_KEY, username);
-    updateHeaderForAuth();
-}
-
-function getCurrentUser() {
-    return localStorage.getItem(USER_KEY);
-}
-
-function logOutUser() {
-    localStorage.removeItem(USER_KEY);
-    window.location.reload();
-}
+const USER_KEY = 'currentUser'; 
 
 function updateHeaderForAuth() {
+    // Uses imported getCurrentUser()
     const user = getCurrentUser();
-    const signUpButtonPlaceholder = document.getElementById('signup-button-placeholder'); 
+    const signUpButtonPlaceholder = document.querySelector('a[href="signup.html"]'); 
     
     if (!signUpButtonPlaceholder) return;
 
-    // --- CONSOLIDATED CLEANUP ---
-    // Remove any existing profile menu from the previous page load/state change
+    // Remove any existing profile menu
     const profileMenu = document.querySelector('.profile-menu');
     if (profileMenu) {
         profileMenu.remove();
     }
-    // --- END CONSOLIDATED CLEANUP ---
     
+    // Restore Sign Up button visibility by default
+    signUpButtonPlaceholder.style.display = 'flex'; 
+
     if (user) {
         // --- LOGGED IN: Inject Initials/Menu ---
         
@@ -60,78 +55,226 @@ function updateHeaderForAuth() {
         if (logoutLink) {
             logoutLink.addEventListener('click', (e) => {
                 e.preventDefault();
+                // Uses imported logOutUser()
                 logOutUser();
             });
         }
-    } else {
-        // --- LOGGED OUT: Ensure static Sign Up button is visible ---
+    } 
+}
+
+// --- CALENDAR LOGIC & EVENT INTEGRATION ---
+
+/**
+ * Aggregates all events from clubs the user has joined.
+ * @returns {Object<string, Array<Object>>} A map of date string ('YYYY-MM-DD') to event objects.
+ */
+function getEventsForJoinedClubs() {
+    const joinedClubs = getJoinedClubs();
+    const eventsByDate = {};
+
+    joinedClubs.forEach(joinedClub => {
+        const fullClub = clubsData.find(c => c.name === joinedClub.name);
         
-        // Restore display: flex to maintain Tailwind styling/alignment
-        signUpButtonPlaceholder.style.display = 'flex'; 
+        if (fullClub && fullClub.events) {
+            fullClub.events.forEach(event => {
+                const parts = event.date.split('-'); 
+                let [month, day, eventYear] = parts.map(p => parseInt(p, 10));
+
+                const standardizedMonth = String(month).padStart(2, '0');
+                const standardizedDay = String(day).padStart(2, '0');
+                
+                const dateKey = `${eventYear}-${standardizedMonth}-${standardizedDay}`;
+
+                if (!eventsByDate[dateKey]) {
+                    eventsByDate[dateKey] = [];
+                }
+
+                eventsByDate[dateKey].push({
+                    clubName: fullClub.name,
+                    eventName: event.name,
+                    link: event.link
+                });
+            });
+        }
+    });
+
+    return eventsByDate;
+}
+
+let date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth(); // 0-indexed
+
+
+// ⭐ NEW: Modal Functions ⭐
+
+function closeEventModal() {
+    const modal = document.getElementById('event-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+        // Remove 'selected' class from all days when modal is closed
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.classList.remove('selected');
+        });
     }
 }
 
-// --- CALENDAR LOGIC ---
+/**
+ * Renders event details and opens the modal.
+ * @param {string} dateKey - The date string ('YYYY-MM-DD').
+ * @param {Array<Object>} events - Array of event objects for that day.
+ */
+function openEventModal(dateKey, events) {
+    const modal = document.getElementById('event-modal');
+    const eventsTitle = document.getElementById('events-title');
+    const eventsList = document.getElementById('events-list');
+    
+    if (!modal || !eventsTitle || !eventsList) return;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. RUN AUTH CHECK FIRST
-    updateHeaderForAuth();
+    // Remove 'selected' class from all days
+    document.querySelectorAll('.calendar-day').forEach(day => {
+        day.classList.remove('selected');
+    });
 
-    // 2. RUN CALENDAR LOGIC
-    const currentMonthYear = document.getElementById('currentMonthYear');
-    const prevMonthBtn = document.getElementById('prevMonth');
-    const nextMonthBtn = document.getElementById('nextMonth');
+    // Add 'selected' class to the clicked day
+    const clickedDay = document.querySelector(`.calendar-day[data-date="${dateKey}"]`);
+    if (clickedDay) {
+        clickedDay.classList.add('selected');
+    }
+
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    const dateTitle = new Date(dateKey + 'T00:00:00').toLocaleDateString(undefined, options);
+
+    eventsTitle.textContent = `Events on ${dateTitle}`;
+    eventsList.innerHTML = '';
+    
+    if (events.length === 0) {
+        eventsList.innerHTML = `<p class="no-events-message">No scheduled events from your joined groups for this day.</p>`;
+    } else {
+        events.forEach(event => {
+            const item = document.createElement('div');
+            item.classList.add('event-item');
+            
+            const eventHtml = `
+                <p class="event-club-name">${event.clubName}</p>
+                <p class="font-semibold text-lg">${event.eventName}</p>
+                <a href="${event.link}" target="_blank" class="event-link">View Event Details &rarr;</a>
+            `;
+            item.innerHTML = eventHtml;
+            eventsList.appendChild(item);
+        });
+    }
+    
+    // Show the modal and prevent background scrolling
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; 
+}
+
+// ⭐ END NEW Modal Functions ⭐
+
+
+function renderCalendar() {
     const calendarGrid = document.querySelector('.calendar-grid');
+    const currentMonthYear = document.getElementById('currentMonthYear');
+    if (!calendarGrid || !currentMonthYear) return;
+    
+    // Ensure modal is closed when rendering a new month
+    closeEventModal();
+    
+    // Get events for the current month
+    const allEvents = getEventsForJoinedClubs();
 
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth(); // 0-indexed
+    calendarGrid.innerHTML = ''; // Clear existing days
 
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
 
-    function renderCalendar() {
-        calendarGrid.innerHTML = ''; // Clear existing days
+    // Re-add day labels (Sun, Mon, etc.)
+    const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    dayLabels.forEach(label => {
+        const dayLabelDiv = document.createElement('div');
+        dayLabelDiv.classList.add('day-label');
+        dayLabelDiv.textContent = label;
+        calendarGrid.appendChild(dayLabelDiv);
+    });
 
-        // Re-add day labels (Sun, Mon, etc.)
-        const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        dayLabels.forEach(label => {
-            const dayLabelDiv = document.createElement('div');
-            dayLabelDiv.classList.add('day-label');
-            dayLabelDiv.textContent = label;
-            calendarGrid.appendChild(dayLabelDiv);
-        });
+    currentMonthYear.textContent = `${monthNames[month]} ${year}`;
 
-        currentMonthYear.textContent = `${monthNames[month]} ${year}`;
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        const firstDayOfMonth = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-        // Fill in empty leading days
-        for (let i = 0; i < firstDayOfMonth; i++) {
-            const emptyDiv = document.createElement('div');
-            emptyDiv.classList.add('calendar-day', 'empty');
-            calendarGrid.appendChild(emptyDiv);
-        }
-
-        // Fill in the days of the month
-        for (let i = 1; i <= daysInMonth; i++) {
-            const dayDiv = document.createElement('div');
-            dayDiv.classList.add('calendar-day');
-            dayDiv.textContent = i;
-            dayDiv.dataset.date = `${year}-${month + 1}-${i}`; // Store full date
-
-            // Highlight November 19, 2025 as selected
-            if (year === 2025 && month === 10 && i === 19) { 
-                dayDiv.classList.add('selected');
-            }
-
-            calendarGrid.appendChild(dayDiv);
-        }
+    // Fill in empty leading days
+    for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('calendar-day', 'empty');
+        calendarGrid.appendChild(emptyDiv);
     }
 
+    // Fill in the days of the month
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.classList.add('calendar-day');
+        dayDiv.textContent = i;
+        
+        // Standardized date key for event lookup (e.g., '2025-12-10')
+        const standardizedMonth = String(month + 1).padStart(2, '0');
+        const standardizedDay = String(i).padStart(2, '0');
+        const dateKey = `${year}-${standardizedMonth}-${standardizedDay}`;
+        
+        dayDiv.dataset.date = dateKey; // Store full date
+
+        // Check for events on this day
+        const eventsOnThisDay = allEvents[dateKey];
+        const hasEvents = eventsOnThisDay && eventsOnThisDay.length > 0;
+
+        if (hasEvents) {
+            dayDiv.classList.add('has-events');
+            
+            // Append a dot/marker for visual indication
+            const eventMarker = document.createElement('div');
+            eventMarker.classList.add('event-marker');
+            eventMarker.textContent = hasEvents ? eventsOnThisDay.length : ''; // Show number of events
+            dayDiv.appendChild(eventMarker);
+
+            // Setup click listener to display event details (uses openEventModal)
+            dayDiv.addEventListener('click', () => openEventModal(dateKey, eventsOnThisDay));
+        } else {
+             // For days without events, still allow basic selection to show "No Events" in modal
+             dayDiv.addEventListener('click', () => openEventModal(dateKey, []));
+        }
+
+        // Highlight today's date
+        const today = new Date();
+        if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+            dayDiv.classList.add('today');
+        }
+
+        calendarGrid.appendChild(dayDiv);
+    }
+}
+
+const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. RUN AUTH CHECK FIRST
+    updateHeaderForAuth();
+
+    // 2. RUN CALENDAR LOGIC
+    const prevMonthBtn = document.getElementById('prevMonth');
+    const nextMonthBtn = document.getElementById('nextMonth');
+    const modal = document.getElementById('event-modal');
+    const modalCloseButton = document.getElementById('modal-close-button');
+
+
+    // Initial render
+    renderCalendar();
+    
     prevMonthBtn.addEventListener('click', () => {
         month--;
         if (month < 0) {
@@ -149,9 +292,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         renderCalendar();
     });
+    
+    // ⭐ Modal Close Listeners ⭐
+    
+    // Close button click
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener('click', closeEventModal);
+    }
+    
+    // Backdrop click
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeEventModal();
+            }
+        });
+    }
 
-    // Initial render
-    renderCalendar();
 });
 
 
