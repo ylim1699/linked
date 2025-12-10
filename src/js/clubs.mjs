@@ -20,7 +20,7 @@ export const clubsData = [
         imageSrc: country,
         fallbackText: "No country dancing this semester",
         joinLink: "#join-country",
-        link: "https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-1",
+        link: "https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-2",
         new: false,
         events: [
             {name:'Dance at the MC', date:'12-10-2025',link:'https://www.byui.edu/calendar/weekly-activities/country-dancing-2025-12-10-11520403-2'},
@@ -68,11 +68,11 @@ export const clubsData = [
         imageSrc: dungeon,
         fallbackText: "no D&D club this semester",
         joinLink: "#join-d&d",
-        link: "https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1",
+        link: "https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-2",
         new: false,
         events: [
-            {name:'Dungeon Quest', date:'12-11-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1'},
-            {name:'Dungeon Quest', date:'12-18-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-1'}
+            {name:'Dungeon Quest', date:'12-11-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-2'},
+            {name:'Dungeon Quest', date:'12-18-2025',link:'https://www.byui.edu/calendar/weekly-activities/game-night-dungeons-and-dragons-2025-12-11-11520404-2'}
         ]
     },
     {
@@ -113,11 +113,11 @@ export const clubsData = [
         imageSrc: laser,
         fallbackText: "Laser tag not available this semester",
         joinLink: "#join-laser",
-        link: "https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1",
+        link: "https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-2",
         new: false,
         events: [
-            {name:'Laser Tag at Taylor Building', date:'12-08-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1'},
-            {name:'Laser Tag at Taylor Building', date:'12-15-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-1'}
+            {name:'Laser Tag at Taylor Building', date:'12-08-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-2'},
+            {name:'Laser Tag at Taylor Building', date:'12-15-2025',link:'https://www.byui.edu/calendar/weekly-activities/home-evening-laser-tag-2025-12-08-11520398-2'}
         ]
     },
     {
